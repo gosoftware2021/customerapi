@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "customerlist")
-@RequiredArgsConstructor
+
 public class CustomerList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

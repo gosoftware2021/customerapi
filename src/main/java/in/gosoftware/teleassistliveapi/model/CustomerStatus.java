@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Table(name = "customerstatus")
-@RequiredArgsConstructor
+
 public class CustomerStatus {
 
     @Id

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
+
 
 public class CustomerDetails {
 

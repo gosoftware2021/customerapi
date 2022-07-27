@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Table(name = "customertemplate")
-@RequiredArgsConstructor
+
 
 public class CustomerTemplate {
     @Id

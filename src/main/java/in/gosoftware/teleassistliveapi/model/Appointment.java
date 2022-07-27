@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Data
-@RequiredArgsConstructor
+
 @NoArgsConstructor
 
 public class Appointment {
