@@ -9,18 +9,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class TeamController {
 
 
     @Autowired
     TeamServiceImpl teamService;
     @PostMapping(value = "/team" )
-    public ResponseEntity<Team> create(@RequestBody Team team){
+    public ResponseEntity<Team> create(@Valid  @RequestBody Team team){
 
 
         //appointmentService.create(appointment);
@@ -49,7 +51,7 @@ public class TeamController {
 
     @PutMapping("/team")
 
-    public ResponseEntity<Team> editById(@RequestBody Team team){
+    public ResponseEntity<Team> editById(@Valid @RequestBody Team team){
 
 
         return new ResponseEntity<>(teamService.edit(team), HttpStatus.OK);

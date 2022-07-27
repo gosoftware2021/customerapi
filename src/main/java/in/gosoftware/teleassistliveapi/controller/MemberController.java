@@ -9,18 +9,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class MemberController {
 
     @Autowired
     MemberServiceImpl memberService;
 
     @PostMapping(value = "/member" )
-    public ResponseEntity<Member> create(@RequestBody Member member){
+    public ResponseEntity<Member> create(@Valid  @RequestBody Member member){
 
 
         //appointmentService.create(appointment);
@@ -49,7 +51,7 @@ public class MemberController {
 
     @PutMapping("/member")
 
-    public ResponseEntity<Member> editById(@RequestBody Member member){
+    public ResponseEntity<Member> editById(@Valid @RequestBody Member member){
 
 
         return new ResponseEntity<>(memberService.edit(member), HttpStatus.OK);

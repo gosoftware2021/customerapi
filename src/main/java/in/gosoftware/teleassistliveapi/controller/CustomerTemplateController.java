@@ -8,18 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CustomerTemplateController {
 
     @Autowired
     CustomerTemplateServiceImpl customerTemplateService;
 
     @PostMapping(value = "/template" )
-    public ResponseEntity<CustomerTemplate> create(@RequestBody CustomerTemplate customerTemplate){
+    public ResponseEntity<CustomerTemplate> create(@Valid  @RequestBody CustomerTemplate customerTemplate){
 
 
         //appointmentService.create(appointment);
@@ -48,7 +50,7 @@ public class CustomerTemplateController {
 
     @PutMapping("/template")
 
-    public ResponseEntity<CustomerTemplate> editById(@RequestBody CustomerTemplate customerTemplate){
+    public ResponseEntity<CustomerTemplate> editById(@Valid @RequestBody CustomerTemplate customerTemplate){
 
 
         return new ResponseEntity<>(customerTemplateService.edit(customerTemplate), HttpStatus.OK);

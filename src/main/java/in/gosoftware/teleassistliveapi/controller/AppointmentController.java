@@ -15,14 +15,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 @Slf4j
-
+@CrossOrigin(origins = "*")
 public class AppointmentController {
 
     @Autowired
     AppointmentServiceImpl appointmentService;
 
     @PostMapping(value = "/appointment" )
-    public ResponseEntity<Appointment> create(@RequestBody Appointment appointment){
+    public ResponseEntity<Appointment> create(@Valid @RequestBody Appointment appointment){
 
 
         //appointmentService.create(appointment);
@@ -51,7 +51,7 @@ public class AppointmentController {
 
     @PutMapping("/appointment")
 
-    public ResponseEntity<Appointment> editById(@RequestBody Appointment appointment){
+    public ResponseEntity<Appointment> editById(@Valid @RequestBody Appointment appointment){
 
 
         return new ResponseEntity<>(appointmentService.edit(appointment), HttpStatus.OK);

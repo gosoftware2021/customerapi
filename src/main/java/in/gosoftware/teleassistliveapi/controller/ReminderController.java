@@ -5,17 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class ReminderController {
 
     @Autowired
     ReminderServiceImpl reminderService;
     @PostMapping(value = "/reminder" )
-    public ResponseEntity<Reminder> create(@RequestBody Reminder reminder){
+    public ResponseEntity<Reminder> create(@Valid  @RequestBody Reminder reminder){
 
 
         //appointmentService.create(appointment);
@@ -44,7 +47,7 @@ public class ReminderController {
 
     @PutMapping("/reminder")
 
-    public ResponseEntity<Reminder> editById(@RequestBody Reminder reminder){
+    public ResponseEntity<Reminder> editById(@Valid @RequestBody Reminder reminder){
 
 
         return new ResponseEntity<>(reminderService.edit(reminder), HttpStatus.OK);

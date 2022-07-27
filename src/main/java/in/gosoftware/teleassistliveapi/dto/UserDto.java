@@ -1,25 +1,24 @@
-package in.gosoftware.teleassistliveapi.model;
+package in.gosoftware.teleassistliveapi.dto;
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 
 @Getter
 @Setter
-@Table(name = "user_details")
 
-public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UserDto {
+
+
     private Long id;
     @NotBlank(message = "Name not found")
     private String name;

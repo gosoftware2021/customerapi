@@ -8,18 +8,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
+
 public class CustomerController {
 
     @Autowired
    private CustomerServiceImpl customerService;
 
     @PostMapping("/customer")
-    public ResponseEntity<CustomerDetails> create(@RequestBody CustomerDetails customerDetails ){
+    public ResponseEntity<CustomerDetails> create(@Valid  @RequestBody CustomerDetails customerDetails ){
 
 //        CustomerDetails customerDetails=new CustomerDetails();
 //        customerDetails.setName("Ardhendu");
@@ -44,7 +47,7 @@ public class CustomerController {
 
     @PutMapping("/customer")
 
-    public ResponseEntity<CustomerDetails> editById(@RequestBody CustomerDetails customerDetails){
+    public ResponseEntity<CustomerDetails> editById(@Valid @RequestBody CustomerDetails customerDetails){
 
 
         return new ResponseEntity<>(customerService.edit(customerDetails), HttpStatus.OK);

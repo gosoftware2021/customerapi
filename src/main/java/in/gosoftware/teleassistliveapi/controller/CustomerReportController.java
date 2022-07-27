@@ -9,18 +9,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CustomerReportController {
 
 
     @Autowired
     CustomerListReportServiceImpl customerListReportService;
     @PostMapping("/report")
-    public ResponseEntity<CustomerListReport> create(@RequestBody CustomerListReport customerListReport ){
+    public ResponseEntity<CustomerListReport> create(@Valid  @RequestBody CustomerListReport customerListReport ){
 
 //        CustomerDetails customerDetails=new CustomerDetails();
 //        customerDetails.setName("Ardhendu");
@@ -45,7 +47,7 @@ public class CustomerReportController {
 
     @PutMapping("/report")
 
-    public ResponseEntity<CustomerListReport> editById(@RequestBody CustomerListReport customerListReport){
+    public ResponseEntity<CustomerListReport> editById(@Valid @RequestBody CustomerListReport customerListReport){
 
 
         return new ResponseEntity<>(customerListReportService.edit(customerListReport), HttpStatus.OK);

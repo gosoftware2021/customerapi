@@ -8,18 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CustomerStatusController {
 
     @Autowired
     CustomerStatusServiceImpl customerStatusService;
 
     @PostMapping(value = "/status" )
-    public ResponseEntity<CustomerStatus> create(@RequestBody CustomerStatus customerStatus){
+    public ResponseEntity<CustomerStatus> create(@Valid  @RequestBody CustomerStatus customerStatus){
 
 
         //appointmentService.create(appointment);
@@ -48,7 +50,7 @@ public class CustomerStatusController {
 
     @PutMapping("/status")
 
-    public ResponseEntity<CustomerStatus> editById(@RequestBody CustomerStatus customerStatus){
+    public ResponseEntity<CustomerStatus> editById(@Valid @RequestBody CustomerStatus customerStatus){
 
 
         return new ResponseEntity<>(customerStatusService.edit(customerStatus), HttpStatus.OK);

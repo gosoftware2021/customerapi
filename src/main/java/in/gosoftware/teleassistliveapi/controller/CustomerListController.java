@@ -8,18 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CustomerListController {
 
     @Autowired
     CustomerListServideimpl customerListServideimpl;
 
     @PostMapping("/customerlist")
-    public ResponseEntity<CustomerList> create(@RequestBody CustomerList customerList ){
+    public ResponseEntity<CustomerList> create(@Valid  @RequestBody CustomerList customerList ){
 
 //        CustomerDetails customerDetails=new CustomerDetails();
 //        customerDetails.setName("Ardhendu");
@@ -44,7 +46,7 @@ public class CustomerListController {
 
     @PutMapping("/customerlist")
 
-    public ResponseEntity<CustomerList> editById(@RequestBody CustomerList customerList){
+    public ResponseEntity<CustomerList> editById(@Valid @RequestBody CustomerList customerList){
 
 
         return new ResponseEntity<>(customerListServideimpl.edit(customerList), HttpStatus.OK);
