@@ -1,0 +1,12 @@
+2022-07-27 14:13:05,971 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Starting TeleAssistapiApplication using Java 11.0.13 on DESKTOP-BGOLSF4 with PID 10940 (D:\spring_workspace\insuapsliveapi\target\classes started by GS106 in D:\spring_workspace\insuapsliveapi)
+2022-07-27 14:13:05,973 DEBUG in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:13:05,973 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] The following 1 profile is active: "dev"
+2022-07-27 14:13:11,320 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Started TeleAssistapiApplication in 5.85 seconds (JVM running for 7.112)
+2022-07-27 14:13:28,989 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Starting TeleAssistapiApplication using Java 11.0.13 on DESKTOP-BGOLSF4 with PID 23156 (D:\spring_workspace\insuapsliveapi\target\classes started by GS106 in D:\spring_workspace\insuapsliveapi)
+2022-07-27 14:13:28,991 DEBUG in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:13:28,991 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] The following 1 profile is active: "dev"
+2022-07-27 14:13:33,177 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Started TeleAssistapiApplication in 4.547 seconds (JVM running for 5.119)
+2022-07-27 14:18:45,183 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Starting TeleAssistapiApplication using Java 11.0.13 on DESKTOP-BGOLSF4 with PID 23976 (D:\spring_workspace\insuapsliveapi\target\classes started by GS106 in D:\spring_workspace\insuapsliveapi)
+2022-07-27 14:18:45,185 DEBUG in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:18:45,185 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] The following 1 profile is active: "dev"
+2022-07-27 14:18:49,450 INFO in.gosoftware.teleassistliveapi.TeleAssistapiApplication [restartedMain] Started TeleAssistapiApplication in 4.632 seconds (JVM running for 5.211)
