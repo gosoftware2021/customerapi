@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
@@ -16,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 
 
-public class CustomerTemplate {
+public class CustomerTemplateDto {
 
      @NotNull(message = "Company Id is Missing")
     private String cmpid;

@@ -1,8 +1,11 @@
 package in.gosoftware.teleassistliveapi.controller;
 
+
+import in.gosoftware.teleassistliveapi.dto.AppointmentDto;
 import in.gosoftware.teleassistliveapi.model.Appointment;
 import in.gosoftware.teleassistliveapi.service.AppointmentServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +24,11 @@ public class AppointmentController {
     @Autowired
     AppointmentServiceImpl appointmentService;
 
+    @Autowired
+    ModelMapper modelMapper;
+
     @PostMapping(value = "/appointment" )
-    public ResponseEntity<Appointment> create(@Valid @RequestBody Appointment appointment){
+    public ResponseEntity<Appointment> create(@Valid @RequestBody AppointmentDto appointmentDto){
 
 
         //appointmentService.create(appointment);
@@ -30,6 +36,7 @@ public class AppointmentController {
        // Appointment appointment1=new Appointment();
        // appointment1.setCmpid("123456789");
 
+       Appointment appointment= modelMapper.map(appointmentDto, Appointment.class);
         return new ResponseEntity<>(appointmentService.create(appointment), HttpStatus.CREATED);
 
 

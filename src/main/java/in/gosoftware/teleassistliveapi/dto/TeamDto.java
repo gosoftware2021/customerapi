@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
 
 
@@ -16,12 +15,12 @@ import java.util.List;
 @Setter
 
 
-public class Team {
+public class TeamDto {
 
 
     private String name;
 
 
-    private List<Member> memberList;
+    private List<MemberDto> memberList;
     private String location;
 }

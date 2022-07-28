@@ -1,9 +1,11 @@
 package in.gosoftware.teleassistliveapi.controller;
 
 
+import in.gosoftware.teleassistliveapi.dto.MemberDto;
 import in.gosoftware.teleassistliveapi.model.Member;
 import in.gosoftware.teleassistliveapi.model.Reminder;
 import in.gosoftware.teleassistliveapi.service.MemberServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,14 @@ public class MemberController {
     @Autowired
     MemberServiceImpl memberService;
 
-    @PostMapping(value = "/member" )
-    public ResponseEntity<Member> create(@Valid  @RequestBody Member member){
+    @Autowired
+    ModelMapper modelMapper;
 
+    @PostMapping(value = "/member" )
+    public ResponseEntity<Member> create(@Valid  @RequestBody MemberDto memberDto){
+
+
+        Member member=modelMapper.map(memberDto,Member.class);
 
         //appointmentService.create(appointment);
 

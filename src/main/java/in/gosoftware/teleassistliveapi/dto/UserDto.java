@@ -1,19 +1,14 @@
 package in.gosoftware.teleassistliveapi.dto;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 
 @Data
 @NoArgsConstructor
 
-@Getter
-@Setter
+@AllArgsConstructor
 
 
 public class UserDto {
@@ -21,12 +16,16 @@ public class UserDto {
 
     private Long id;
     @NotBlank(message = "Name not found")
+    @NotNull
     private String name;
-    @Pattern(regexp = "^\\\\d{10}$",message = "invalid mobile number entered ")
+    @NotNull
+    @Pattern(regexp = "^\\d{10}$",message = "invalid mobile number entered ")
     private String mobile;
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$",message = "Enter Valid Email Id")
+    @NotNull
+    @Email
     private String email;
     @NotBlank
+    @Min(value = 6,message = "Password should be min six digit ")
    // @Pattern(regexp = "^([a-zA-Z0-9@*#]{8,15})$",message = "invalid pasword entered ")
     private String password;
 }

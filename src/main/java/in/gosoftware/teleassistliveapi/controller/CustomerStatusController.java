@@ -1,8 +1,10 @@
 package in.gosoftware.teleassistliveapi.controller;
 
 
+import in.gosoftware.teleassistliveapi.dto.CustomerStatusDto;
 import in.gosoftware.teleassistliveapi.model.CustomerStatus;
 import in.gosoftware.teleassistliveapi.service.CustomerStatusServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +22,14 @@ public class CustomerStatusController {
     @Autowired
     CustomerStatusServiceImpl customerStatusService;
 
+    @Autowired
+    ModelMapper modelMapper;
+
     @PostMapping(value = "/status" )
-    public ResponseEntity<CustomerStatus> create(@Valid  @RequestBody CustomerStatus customerStatus){
+    public ResponseEntity<CustomerStatus> create(@Valid  @RequestBody CustomerStatusDto customerStatusDto){
 
 
+        CustomerStatus customerStatus=modelMapper.map(customerStatusDto,CustomerStatus.class);
         //appointmentService.create(appointment);
 
         // Appointment appointment1=new Appointment();

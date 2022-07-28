@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
@@ -16,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 
 
-public class CustomerStatus {
+public class CustomerStatusDto {
 
 
     @NotNull(message = "Company Id is Missing")

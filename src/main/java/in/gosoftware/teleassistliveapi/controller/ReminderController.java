@@ -1,6 +1,8 @@
 package in.gosoftware.teleassistliveapi.controller;
+import in.gosoftware.teleassistliveapi.dto.ReminderDto;
 import in.gosoftware.teleassistliveapi.model.Reminder;
 import in.gosoftware.teleassistliveapi.service.ReminderServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +19,20 @@ public class ReminderController {
 
     @Autowired
     ReminderServiceImpl reminderService;
+
+
+    @Autowired
+    ModelMapper modelMapper;
     @PostMapping(value = "/reminder" )
-    public ResponseEntity<Reminder> create(@Valid  @RequestBody Reminder reminder){
+    public ResponseEntity<Reminder> create(@Valid  @RequestBody ReminderDto reminderDto){
 
 
         //appointmentService.create(appointment);
 
         // Appointment appointment1=new Appointment();
         // appointment1.setCmpid("123456789");
+
+        Reminder reminder=modelMapper.map(reminderDto,Reminder.class);
 
         return new ResponseEntity<>(reminderService.create(reminder), HttpStatus.CREATED);
 

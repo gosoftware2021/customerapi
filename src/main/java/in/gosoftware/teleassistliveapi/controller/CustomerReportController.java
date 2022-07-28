@@ -2,8 +2,10 @@ package in.gosoftware.teleassistliveapi.controller;
 
 
 
+import in.gosoftware.teleassistliveapi.dto.CustomerListReportDto;
 import in.gosoftware.teleassistliveapi.model.CustomerListReport;
 import in.gosoftware.teleassistliveapi.service.CustomerListReportServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,17 @@ public class CustomerReportController {
 
     @Autowired
     CustomerListReportServiceImpl customerListReportService;
+    @Autowired
+    ModelMapper modelMapper;
+
     @PostMapping("/report")
-    public ResponseEntity<CustomerListReport> create(@Valid  @RequestBody CustomerListReport customerListReport ){
+    public ResponseEntity<CustomerListReport> create(@Valid  @RequestBody CustomerListReportDto customerListReportDto ){
 
 //        CustomerDetails customerDetails=new CustomerDetails();
 //        customerDetails.setName("Ardhendu");
 //        customerDetails.setCust_mb("0123456789");
+
+            CustomerListReport customerListReport=modelMapper.map(customerListReportDto,CustomerListReport.class);
 
         HttpStatus httpStatus=customerListReport!=null?HttpStatus.CREATED:HttpStatus.BAD_REQUEST;
         return new ResponseEntity<CustomerListReport>(customerListReportService.create(customerListReport),httpStatus);

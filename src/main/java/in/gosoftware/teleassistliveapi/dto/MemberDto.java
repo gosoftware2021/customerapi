@@ -11,12 +11,12 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Member extends UserDto {
+public class MemberDto extends UserDto {
 
 
     private boolean active;
     private boolean crm;
     private boolean skip_call;
 
-    private Team team;
+    private TeamDto team;
 }

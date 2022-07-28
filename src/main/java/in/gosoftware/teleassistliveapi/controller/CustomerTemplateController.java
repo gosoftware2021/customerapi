@@ -1,8 +1,10 @@
 package in.gosoftware.teleassistliveapi.controller;
 
+import in.gosoftware.teleassistliveapi.dto.CustomerTemplateDto;
 import in.gosoftware.teleassistliveapi.model.CustomerStatus;
 import in.gosoftware.teleassistliveapi.model.CustomerTemplate;
 import in.gosoftware.teleassistliveapi.service.CustomerTemplateServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +22,15 @@ public class CustomerTemplateController {
     @Autowired
     CustomerTemplateServiceImpl customerTemplateService;
 
+
+    @Autowired
+    ModelMapper modelMapper;
+
     @PostMapping(value = "/template" )
-    public ResponseEntity<CustomerTemplate> create(@Valid  @RequestBody CustomerTemplate customerTemplate){
+    public ResponseEntity<CustomerTemplate> create(@Valid  @RequestBody CustomerTemplateDto customerTemplateDto){
 
 
+        CustomerTemplate customerTemplate=modelMapper.map(customerTemplateDto,CustomerTemplate.class);
         //appointmentService.create(appointment);
 
         // Appointment appointment1=new Appointment();

@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 
 
-public class CustomerDetails {
+public class CustomerDetailsDto {
 
 
 
@@ -25,7 +25,7 @@ public class CustomerDetails {
     private String cust_mb;
     @ManyToOne
 
-    private CustomerList customerlist;
+    private CustomerListDto customerlist;
 
 
 

@@ -2,8 +2,10 @@ package in.gosoftware.teleassistliveapi.controller;
 
 
 
+import in.gosoftware.teleassistliveapi.dto.TeamDto;
 import in.gosoftware.teleassistliveapi.model.Team;
 import in.gosoftware.teleassistliveapi.service.TeamServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,14 @@ public class TeamController {
 
     @Autowired
     TeamServiceImpl teamService;
-    @PostMapping(value = "/team" )
-    public ResponseEntity<Team> create(@Valid  @RequestBody Team team){
 
+    @Autowired
+    ModelMapper modelMapper;
+    @PostMapping(value = "/team" )
+    public ResponseEntity<Team> create(@Valid  @RequestBody TeamDto teamDto){
+
+
+        Team team=modelMapper.map(teamDto,Team.class);
 
         //appointmentService.create(appointment);
 

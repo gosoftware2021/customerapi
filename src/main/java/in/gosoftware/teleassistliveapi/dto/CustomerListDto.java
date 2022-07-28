@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -17,12 +16,12 @@ import java.util.List;
 @Setter
 
 
-public class CustomerList {
+public class CustomerListDto {
 
 
     @NotNull(message = "Customer List Name Not found")
     private String list_name;
 
-    private List<CustomerDetails> customerDetailsList;
+    private List<CustomerDetailsDto> customerDetailsList;
 
 }
