@@ -1,6 +1,8 @@
 package in.gosoftware.teleassistliveapi.dto;
 
+import in.gosoftware.teleassistliveapi.validation.ValidEmail;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 
@@ -22,10 +24,11 @@ public class UserDto {
     @Pattern(regexp = "^\\d{10}$",message = "invalid mobile number entered ")
     private String mobile;
     @NotNull
-    @Email
+    @ValidEmail
     private String email;
     @NotBlank
-    @Min(value = 6,message = "Password should be min six digit ")
+    @Length(min = 6,message = "Password should be min six digit " )
+    //@Min(value = 6,message = "Password should be min six digit ")
    // @Pattern(regexp = "^([a-zA-Z0-9@*#]{8,15})$",message = "invalid pasword entered ")
     private String password;
 }
