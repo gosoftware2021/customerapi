@@ -16,8 +16,6 @@ import javax.validation.constraints.NotNull;
 
 public class CustomerCallDto {
 
-
-
     @NotNull
     private String list_name;
     @NotNull

@@ -48,7 +48,7 @@ public class ReminderController {
 
     @GetMapping("/reminder/{id}")
 
-    public ResponseEntity<Optional<Reminder>> getById(Long id){
+    public ResponseEntity<Reminder> getById(Long id){
 
         return new ResponseEntity<>(reminderService.getById(id),HttpStatus.ACCEPTED);
     }

@@ -14,7 +14,7 @@ public interface CustomerStatusService {
 
     List<CustomerStatus> getAll();
 
-    Optional<CustomerStatus> getById(Long id);
+    CustomerStatus getById(Long id);
 
     void delete(Long id);
 }

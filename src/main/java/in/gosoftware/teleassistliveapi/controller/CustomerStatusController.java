@@ -49,7 +49,7 @@ public class CustomerStatusController {
 
     @GetMapping("/status/{id}")
 
-    public ResponseEntity<Optional<CustomerStatus>> getById(@PathVariable Long id){
+    public ResponseEntity<CustomerStatus> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(customerStatusService.getById(id),HttpStatus.ACCEPTED);
     }

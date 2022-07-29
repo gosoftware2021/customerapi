@@ -47,7 +47,7 @@ public class UserController {
 
     @GetMapping("/user/{id}")
 
-    public ResponseEntity<Optional<User>> getById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<User> getById(@PathVariable(name = "id") Long id){
 
         return new ResponseEntity<>(userSerice.getById(id),HttpStatus.ACCEPTED);
     }
@@ -63,8 +63,9 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteById(@PathVariable Long id){
+    public ResponseEntity<String> deleteById(@PathVariable Long id){
         userSerice.delete(id);
+        return new ResponseEntity<>("Deleted successfully",HttpStatus.OK);
         //  return new ResponseEntity<>(appointmentService.delete(id),HttpStatus.OK);
     }
 }

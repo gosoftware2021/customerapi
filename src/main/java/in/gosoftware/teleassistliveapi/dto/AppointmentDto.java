@@ -12,12 +12,9 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Data
-
 @NoArgsConstructor
 
 public class AppointmentDto {
-
-
 
 
             @NotNull(message = "Company Id is missing")

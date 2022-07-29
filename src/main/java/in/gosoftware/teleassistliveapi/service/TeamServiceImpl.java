@@ -1,5 +1,6 @@
 package in.gosoftware.teleassistliveapi.service;
 
+import in.gosoftware.teleassistliveapi.exception.NoDataFoundException;
 import in.gosoftware.teleassistliveapi.model.Team;
 import in.gosoftware.teleassistliveapi.repo.TeamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,15 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public Optional<Team> getById(Long id) {
-        return teamRepo.findById(id);
+    public Team getById(Long id) {
+        return teamRepo.findById(id)
+                .orElseThrow(()->new NoDataFoundException("No User Found with this id:"+id));
     }
 
     @Override
     public void delete(Long id) {
-
-        teamRepo.deleteById(id);
+        Team team=getById(id);
+        teamRepo.deleteById(team.getId());
 
     }
 }

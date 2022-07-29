@@ -1,5 +1,6 @@
 package in.gosoftware.teleassistliveapi.service;
 
+import in.gosoftware.teleassistliveapi.exception.NoDataFoundException;
 import in.gosoftware.teleassistliveapi.model.Member;
 import in.gosoftware.teleassistliveapi.repo.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,17 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Optional<Member> getById(Long id) {
-        return memberRepo.findById(id);
+    public Member getById(Long id) {
+        return memberRepo.findById(id)
+                .orElseThrow(()->new NoDataFoundException("No User Found with this id:"+id));
     }
 
     @Override
     public void delete(Long id) {
 
-        memberRepo.deleteById(id);
+        Member member=getById(id);
+
+        memberRepo.deleteById(member.getId());
 
     }
 }

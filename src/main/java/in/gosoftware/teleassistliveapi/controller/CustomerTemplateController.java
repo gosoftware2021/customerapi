@@ -50,7 +50,7 @@ public class CustomerTemplateController {
 
     @GetMapping("/template/{id}")
 
-    public ResponseEntity<Optional<CustomerTemplate>> getById(@PathVariable Long id){
+    public ResponseEntity<CustomerTemplate> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(customerTemplateService.getById(id),HttpStatus.ACCEPTED);
     }

@@ -47,7 +47,7 @@ public class CustomerReportController {
 
     @GetMapping("/report/{id}")
 
-    public ResponseEntity<Optional<CustomerListReport>> getById(@PathVariable Long id){
+    public ResponseEntity<CustomerListReport> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(customerListReportService.getById(id),HttpStatus.ACCEPTED);
     }

@@ -15,7 +15,7 @@ public interface CustomerCallService {
 
     List<CustomerCall> getAll();
 
-    Optional<CustomerCall> getById(Long id);
+    CustomerCall getById(Long id);
 
     void delete(Long id);
 }

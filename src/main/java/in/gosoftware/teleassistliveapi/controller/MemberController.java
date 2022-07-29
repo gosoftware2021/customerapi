@@ -1,6 +1,7 @@
 package in.gosoftware.teleassistliveapi.controller;
 
 
+import in.gosoftware.teleassistliveapi.common.UserConstant;
 import in.gosoftware.teleassistliveapi.dto.MemberDto;
 import in.gosoftware.teleassistliveapi.model.Member;
 import in.gosoftware.teleassistliveapi.model.Reminder;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 @CrossOrigin(origins = "*")
 public class MemberController {
 
@@ -26,11 +28,16 @@ public class MemberController {
     @Autowired
     ModelMapper modelMapper;
 
-    @PostMapping(value = "/member" )
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
+    @PostMapping(value = "/join/member" )
     public ResponseEntity<Member> create(@Valid  @RequestBody MemberDto memberDto){
 
-
+       // memberDto.setRoles(UserConstant.DEFAULT_ROLE);
+        memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
         Member member=modelMapper.map(memberDto,Member.class);
+        member.setRoles(UserConstant.DEFAULT_ROLE);
 
         //appointmentService.create(appointment);
 
@@ -51,7 +58,7 @@ public class MemberController {
 
     @GetMapping("/member/{id}")
 
-    public ResponseEntity<Optional<Member>> getById(@PathVariable Long id){
+    public ResponseEntity<Member> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(memberService.getById(id),HttpStatus.ACCEPTED);
     }

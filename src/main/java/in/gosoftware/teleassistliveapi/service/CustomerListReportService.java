@@ -15,7 +15,7 @@ public interface CustomerListReportService {
 
     List<CustomerListReport> getAll();
 
-    Optional<CustomerListReport> getById(Long id);
+    CustomerListReport getById(Long id);
 
     void delete(Long id);
 }

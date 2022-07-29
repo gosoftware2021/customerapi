@@ -13,7 +13,7 @@ public interface UserService {
     User edit(User user);
     List<User> getAll();
 
-    Optional<User> getById(Long id);
+    User getById(Long id);
 
     void delete(Long id);
 }

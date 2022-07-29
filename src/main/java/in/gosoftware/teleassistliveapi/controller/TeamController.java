@@ -51,7 +51,7 @@ public class TeamController {
 
     @GetMapping("/team/{id}")
 
-    public ResponseEntity<Optional<Team>> getById(@PathVariable Long id){
+    public ResponseEntity<Team> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(teamService.getById(id),HttpStatus.ACCEPTED);
     }

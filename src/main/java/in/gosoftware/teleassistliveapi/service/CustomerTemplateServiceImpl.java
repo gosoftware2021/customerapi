@@ -1,5 +1,6 @@
 package in.gosoftware.teleassistliveapi.service;
 
+import in.gosoftware.teleassistliveapi.exception.NoDataFoundException;
 import in.gosoftware.teleassistliveapi.model.CustomerTemplate;
 import in.gosoftware.teleassistliveapi.repo.CustomerTemplateRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,15 @@ public class CustomerTemplateServiceImpl implements CustomerTemplateService{
     }
 
     @Override
-    public Optional<CustomerTemplate> getById(Long id) {
-        return customerTemplateRepo.findById(id);
+    public CustomerTemplate getById(Long id) {
+        return customerTemplateRepo.findById(id)
+                .orElseThrow(()->new NoDataFoundException("No User Found with this id:"+id));
     }
 
     @Override
     public void delete(Long id) {
-
-        customerTemplateRepo.deleteById(id);
+        CustomerTemplate customerTemplate=getById(id);
+        customerTemplateRepo.deleteById(customerTemplate.getId());
 
     }
 }

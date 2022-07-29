@@ -1,12 +1,12 @@
 package in.gosoftware.teleassistliveapi.service;
 
+import in.gosoftware.teleassistliveapi.exception.NoDataFoundException;
 import in.gosoftware.teleassistliveapi.model.Appointment;
 import in.gosoftware.teleassistliveapi.repo.AppointmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService{
@@ -29,12 +29,14 @@ public class AppointmentServiceImpl implements AppointmentService{
     }
 
     @Override
-    public Optional<Appointment> getById(Long id) {
-        return appointmentRepo.findById(id);
+    public Appointment getById(Long id) {
+        return appointmentRepo.findById(id)
+                .orElseThrow(()-> new NoDataFoundException("Appointment Data not found  with this id: "+id));
     }
 
     @Override
     public void delete(Long id) {
-        appointmentRepo.deleteById(id);
+        Appointment appointment=getById(id);
+        appointmentRepo.deleteById(appointment.getId());
     }
 }

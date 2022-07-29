@@ -10,12 +10,19 @@ import javax.persistence.*;
 @Getter
 @Setter
 
-public class Member extends User{
+public class Member {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
 
+    private String mobile;
 
+    private String email;
+
+    private String password;
     private boolean active;
-    private boolean crm;
-    private boolean skip_call;
-    @ManyToOne
-    private Team team;
+    private String roles;
+
+
 }

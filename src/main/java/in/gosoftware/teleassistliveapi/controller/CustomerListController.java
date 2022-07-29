@@ -45,7 +45,7 @@ public class CustomerListController {
 
     @GetMapping("/customerlist/{id}")
 
-    public ResponseEntity<Optional<CustomerList>> getById(@PathVariable Long id){
+    public ResponseEntity<CustomerList> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(customerListServideimpl.getById(id),HttpStatus.ACCEPTED);
     }

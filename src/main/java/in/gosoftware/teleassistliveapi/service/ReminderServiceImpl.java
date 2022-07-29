@@ -1,5 +1,6 @@
 package in.gosoftware.teleassistliveapi.service;
 
+import in.gosoftware.teleassistliveapi.exception.NoDataFoundException;
 import in.gosoftware.teleassistliveapi.model.Reminder;
 import in.gosoftware.teleassistliveapi.repo.ReminderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,18 @@ public class ReminderServiceImpl implements ReminderService{
     }
 
     @Override
-    public Optional<Reminder> getById(Long id) {
-        return reminderRepo.findById(id);
+    public Reminder getById(Long id) {
+        return reminderRepo.findById(id)
+                .orElseThrow(()->new NoDataFoundException("No User Found with this id:"+id));
     }
 
     @Override
     public void delete(Long id) {
 
-        reminderRepo.deleteById(id);
+        Reminder reminder=getById(id);
+
+
+        reminderRepo.deleteById(reminder.getId());
 
     }
 }

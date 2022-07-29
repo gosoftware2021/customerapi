@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 
 public class CustomerCallController {
@@ -49,7 +49,7 @@ public class CustomerCallController {
 
     @GetMapping("/call/{id}")
 
-    public ResponseEntity<Optional<CustomerCall>> getById(@PathVariable Long id){
+    public ResponseEntity<CustomerCall> getById(@PathVariable Long id){
 
         return new ResponseEntity<>(customerCallService.getById(id),HttpStatus.ACCEPTED);
     }

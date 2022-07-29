@@ -14,7 +14,7 @@ public interface ReminderService {
 
     List<Reminder> getAll();
 
-    Optional<Reminder> getById(Long id);
+    Reminder getById(Long id);
 
     void delete(Long id);
 }

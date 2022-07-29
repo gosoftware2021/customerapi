@@ -13,7 +13,7 @@ public interface MemberService {
 
     List<Member> getAll();
 
-    Optional<Member> getById(Long id);
+    Member getById(Long id);
 
     void delete(Long id);
 }

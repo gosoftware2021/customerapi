@@ -15,7 +15,7 @@ public interface CustomerTemplateService {
 
     List<CustomerTemplate> getAll();
 
-    Optional<CustomerTemplate> getById(Long id);
+    CustomerTemplate getById(Long id);
 
     void delete(Long id);
 }
